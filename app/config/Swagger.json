@@ -1,0 +1,122 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Juniorlogs Full-Stack Developer Test",
+    "version": "1.0.0",
+    "title": "JuniorLogs API",
+    "contact": {
+      "email": "example@email.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": ["http"],
+  "host": "localhost:5000",
+  "basePath": "/",
+  "paths": {
+    "/todo": {
+      "get": {
+        "summary": "Get all the ToDos",
+        "description": "Get all the ToDos",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "summary": "Create the Todo",
+        "description": "Create the Todo",
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/todosResponse"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/todo/{id}": {
+      "get": {
+        "summary": "Get details about a specific ToDo",
+        "description": "Get details about a specific ToDo",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ToDo id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "summary": "Update the ToDo",
+        "description": "Update the ToDo",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ToDo id that needs to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/todosResponse"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "summary": "Delete the ToDo",
+        "description": "Delete the ToDo",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ToDo id that needs to be deleted",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "todosResponse": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "creator": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+ 

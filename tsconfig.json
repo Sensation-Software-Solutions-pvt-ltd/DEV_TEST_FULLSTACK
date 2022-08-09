@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "module": "ES2022",
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowJs": true,
+    "importHelpers": true,
+    "maxNodeModuleJsDepth": 1,
+    "baseUrl": "app",
+    "paths": {
+      "@/*": ["*"],
+      "@common/*": ["common/*"],
+      "@config/*": ["config/*"],
+      "@controllers/*": ["controllers/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"]
+    }
+  },
+  "include": ["./app", "./app/**/*.ts", "app/**/*.json", ".env"],
+  "exclude": ["./node_modules/*"]
+}
