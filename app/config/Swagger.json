@@ -13,7 +13,7 @@
     }
   },
   "schemes": ["https"],
-  "host": "juniorlogs.herokuapp.com/",
+  "host": "juniorlogs.herokuapp.com",
   "basePath": "/",
   "paths": {
     "/todo": {
