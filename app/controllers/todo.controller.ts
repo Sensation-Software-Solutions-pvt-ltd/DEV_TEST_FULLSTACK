@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 
 import TodoService from '@services/todo.service.js'
+import TodoPayload from '@/common/Interfaces/Todo.payload.js';
 
 const router = express.Router();
 
@@ -29,7 +30,7 @@ export const getTodo = async (req: Request, res: Response) => {
 }
 
 export const createTodo = async (req: Request, res: Response) => {
-    const todo = req.body;
+    const todo: TodoPayload = req.body;
 
     try {
         const newTodo = await TodoService.createTodo(todo);
@@ -41,12 +42,12 @@ export const createTodo = async (req: Request, res: Response) => {
 
 export const updateTodo = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { title, description, creator } = req.body;
+    const { title, description, creator }: TodoPayload = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No todo with id: ${id}`);
 
-    const updatedTodo = { creator, title, description, _id: id };
-    await TodoService.updateTodo(id, updateTodo)
+    const updatedTodo: TodoPayload = { creator, title, description, _id: id };
+    await TodoService.updateTodo(id, updatedTodo)
 
     res.json(updatedTodo);
 }

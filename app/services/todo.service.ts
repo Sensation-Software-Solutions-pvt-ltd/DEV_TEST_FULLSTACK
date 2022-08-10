@@ -1,4 +1,5 @@
 import Todo from '@models/todo.schema.js';
+import TodoPayload from '@common/Interfaces/Todo.payload';
 
 export default {
     list: async (page: number) => {
@@ -12,12 +13,12 @@ export default {
     findById: async (id: string) => {
         return await Todo.findById(id);
     },
-    createTodo: async (todo: any) => {
+    createTodo: async (todo: TodoPayload) => {
         const newTodo = await new Todo({ ...todo, createdAt: new Date().toISOString() })
         await newTodo.save();
         return newTodo;
     },
-    updateTodo: async (id: string, updatedTodo: any) => {
+    updateTodo: async (id: string, updatedTodo: TodoPayload) => {
         await Todo.findByIdAndUpdate(id, updatedTodo, { new: true });
     },
     removeTodo: async (id: string) => {

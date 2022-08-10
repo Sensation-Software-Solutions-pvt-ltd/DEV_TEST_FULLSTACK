@@ -12,23 +12,92 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "schemes": ["https"],
-  "host": "juniorlogs.herokuapp.com",
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:8000",
   "basePath": "/",
+  "securityDefinitions": {
+    "bearerAuth": {
+      "description": "Standard Authorization header using the Bearer scheme. Example: \"bearer {token}\"",
+      "type": "apiKey",
+      "name": "authorization",
+      "scheme": "bearer",
+      "in": "header",
+      "bearerAuth": "JWT"
+    }
+  },
   "paths": {
+    "/auth/login": {
+      "post": {
+        "summary": "",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/loginBody"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "summary": "",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "task object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/signUpBody"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/todo": {
       "get": {
         "summary": "Get all the ToDos",
         "description": "Get all the ToDos",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {}
       },
       "post": {
         "summary": "Create the Todo",
         "description": "Create the Todo",
-        "produces": ["application/json"],
-        "consumes": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [ { "bearerAuth": [] } ],
         "parameters": [
           {
             "in": "body",
@@ -48,7 +117,9 @@
       "get": {
         "summary": "Get details about a specific ToDo",
         "description": "Get details about a specific ToDo",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -63,7 +134,10 @@
       "patch": {
         "summary": "Update the ToDo",
         "description": "Update the ToDo",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
+        "security": [ { "bearerAuth": [] } ],
         "parameters": [
           {
             "name": "id",
@@ -88,7 +162,10 @@
       "delete": {
         "summary": "Delete the ToDo",
         "description": "Delete the ToDo",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
+        "security": [ { "bearerAuth": [] } ],
         "parameters": [
           {
             "name": "id",
@@ -103,6 +180,34 @@
     }
   },
   "definitions": {
+    "loginBody": {
+      "type": "object",
+      "properties": {
+        "email":{
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "signUpBody": {
+      "type": "object",
+      "properties": {
+        "email":{
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "firstName":{
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
     "todosResponse": {
       "type": "object",
       "properties": {
@@ -119,4 +224,3 @@
     }
   }
 }
- 

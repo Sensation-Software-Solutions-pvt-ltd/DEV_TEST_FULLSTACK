@@ -3,7 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import todoRoutes from "./routes/todo.js";
+import userRoutes from '@routes/users.js'
+import todoRoutes from "@routes/todo.js";
 import { connectDatabase } from '@common/Database.js';
 import { PORT } from '@config/config.js'
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {}));
+app.use('/auth', userRoutes);
 app.use('/todo', todoRoutes);
 
 connectDatabase();
