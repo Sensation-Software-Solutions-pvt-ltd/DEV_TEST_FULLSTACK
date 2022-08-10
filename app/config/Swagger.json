@@ -13,9 +13,9 @@
     }
   },
   "schemes": [
-    "http"
+    "https"
   ],
-  "host": "localhost:8000",
+  "host": "juniorlogs.herokuapp.com",
   "basePath": "/",
   "securityDefinitions": {
     "bearerAuth": {
