@@ -20,7 +20,8 @@
     "mongoose": "^6.5.1",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
-    "tsc-alias": "^1.7.0"
+    "tsc-alias": "^1.7.0",
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
